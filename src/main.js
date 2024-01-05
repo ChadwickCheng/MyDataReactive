@@ -14,10 +14,14 @@ var obj = {
           }
       }
   },
+  g:[22,33,44,55]
 };
 
 const ob = observe(obj);
-obj.a.m = 10;
-console.log(obj.c.d.e.f);
-console.log('ob',ob);
-console.log('obj',obj);
+// obj.a.m = 10;
+// console.log(obj.c.d.e.f);
+// console.log('ob',ob);
+// console.log('obj',obj);
+
+obj.g.splice(2,1,666);
+console.log('obj.g',obj.g);
