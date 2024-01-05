@@ -50,6 +50,8 @@ methodsNeedChange.forEach(methodName=>{
     // 对新值进行observe
     if(inserted) ob.observeArray(inserted);
     console.log(`调用了${methodName}方法`);
+
+    ob.dep.notify();
     
     return result;
   },false)

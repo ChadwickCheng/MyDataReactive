@@ -1,4 +1,5 @@
 import observe from './js/3_observe'
+import Watcher from './js/7_Watcher'
 
 var obj = {
   a: {
@@ -19,11 +20,17 @@ var obj = {
 
 const ob = observe(obj);
 // obj.a.m = 10;
-// console.log(obj.c.d.e.f);
+// console.log(obj);
 // console.log('ob',ob);
 // console.log('obj',obj);
 
 // obj.g.splice(2,1,666);
 // console.log('obj.g',obj.g);
-const xxx = obj.g.pop();
-console.log('xxx',xxx);
+// const xxx = obj.g.pop();
+// console.log('xxx',xxx);
+
+new Watcher(obj,'a.m.n',val=>{
+  console.log('watcher1',val);
+})
+// obj.a.m.n = 88;
+// console.log('obj',obj);

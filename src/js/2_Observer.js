@@ -2,9 +2,16 @@ import {def} from './4_utils'
 import defineReactive from './1_defineReactive'
 import {arrayMethods} from './5_array'
 import observe from './3_observe'
+import Dep from './6_Dep'
+
+/*
+  Observer类的目的：将一个正常的Object转换为每个层级的属性都是响应式的Object
+*/
 
 export default class Observer{
   constructor(value){
+    // 给Observer实例增加一个dep属性
+    this.dep = new Dep();
     // value就是data，给data绑__ob__属性，值为Observer实例，且__ob__不可枚举
     def(value,'__ob__',this,false);
     // 判断value是数组还是对象

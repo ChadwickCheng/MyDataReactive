@@ -1,0 +1,21 @@
+main.js:
+	1. observe(obj):此时没有new Watcher
+		1.obj的每个层级的对象都有一个dep实例
+		2.响应式属性set有notify
+	2. a = new Watcher(obj,'a.m.n',cb):
+		1. a.target === obj
+		2. a.getter
+		3. a.cb
+		4. 调用this.get(),首先Dep.target===a,之后尝试获得表达式的值，如果没找到，就Dep.target===null。假设有这个值:访问a，调用get,调用depend，subs有了a。。。
+
+
+	3. obj.a.m.n = 88:
+		1. 调用dep.notify，对实例a调用update，触发cb
+
+dep实例：
+	1. subs存储所有watcher实例
+	2. 调用depend方法会将全局Dep.target所指a塞入subs
+	3. 调用notify会对sub所有的watcher实例调用update方法
+Watcher的update方法：
+	1. update->run->getAndInvoke
+	2. getAndInvoke方法会将新值与旧值比对，如果不同就会将源数据对象调用cb并传递新旧值
