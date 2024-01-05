@@ -23,5 +23,7 @@ const ob = observe(obj);
 // console.log('ob',ob);
 // console.log('obj',obj);
 
-obj.g.splice(2,1,666);
-console.log('obj.g',obj.g);
+// obj.g.splice(2,1,666);
+// console.log('obj.g',obj.g);
+const xxx = obj.g.pop();
+console.log('xxx',xxx);
